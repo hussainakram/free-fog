@@ -22,6 +22,9 @@
 #  provider               :string           default("email"), not null
 #  uid                    :string           default(""), not null
 #  tokens                 :json
+#  passport_id            :string
+#  phone                  :string
+#  dob                    :datetime
 #
 # Indexes
 #

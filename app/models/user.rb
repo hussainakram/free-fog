@@ -22,6 +22,9 @@
 #  provider               :string           default("email"), not null
 #  uid                    :string           default(""), not null
 #  tokens                 :json
+#  passport_id            :string
+#  phone                  :string
+#  dob                    :datetime
 #
 # Indexes
 #
@@ -40,6 +43,9 @@ class User < ApplicationRecord
   validates :uid, uniqueness: { scope: :provider }
 
   before_validation :init_uid
+
+  has_many :quotes
+  has_many :tours
 
   def full_name
     return username if first_name.blank?

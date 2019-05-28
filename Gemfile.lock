@@ -155,12 +155,18 @@ GEM
       railties (>= 3.0.0)
     faker (1.7.3)
       i18n (~> 0.5)
+    faraday (0.15.4)
+      multipart-post (>= 1.2, < 3)
     ffi (1.9.23)
     figaro (1.1.1)
       thor (~> 0.14)
     formtastic (3.1.5)
       actionpack (>= 3.2.13)
     formtastic_i18n (0.6.0)
+    geokit (1.13.1)
+    geokit-rails (2.3.1)
+      geokit (~> 1.5)
+      rails (>= 3.0)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     haml (5.0.4)
@@ -199,6 +205,9 @@ GEM
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
     json (2.1.0)
+    json-schema (2.8.1)
+      addressable (>= 2.4)
+    jwt (2.2.1)
     kaminari (1.1.1)
       activesupport (>= 4.1.0)
       kaminari-actionview (= 1.1.1)
@@ -233,6 +242,7 @@ GEM
     minitest (5.11.3)
     msgpack (1.2.4)
     multi_json (1.13.1)
+    multipart-post (2.1.1)
     nio4r (2.3.1)
     nokogiri (1.9.1)
       mini_portile2 (~> 2.4.0)
@@ -329,6 +339,19 @@ GEM
       rspec-mocks (~> 3.8.0)
       rspec-support (~> 3.8.0)
     rspec-support (3.8.0)
+    rswag (2.0.5)
+      rswag-api (= 2.0.5)
+      rswag-specs (= 2.0.5)
+      rswag-ui (= 2.0.5)
+    rswag-api (2.0.5)
+      railties (>= 3.1, < 6.0)
+    rswag-specs (2.0.5)
+      activesupport (>= 3.1, < 6.0)
+      json-schema (~> 2.2)
+      railties (>= 3.1, < 6.0)
+    rswag-ui (2.0.5)
+      actionpack (>= 3.1, < 6.0)
+      railties (>= 3.1, < 6.0)
     rubocop (0.65.0)
       jaro_winkler (~> 1.5.1)
       parallel (~> 1.10)
@@ -373,6 +396,10 @@ GEM
     thor (0.20.3)
     thread_safe (0.3.6)
     tilt (2.0.8)
+    twilio-ruby (5.23.0)
+      faraday (~> 0.9)
+      jwt (>= 1.5, <= 2.5)
+      nokogiri (>= 1.6, < 2.0)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
     uglifier (2.7.2)
@@ -414,6 +441,8 @@ DEPENDENCIES
   factory_bot_rails (~> 4.8.2)
   faker (~> 1.7.3)
   figaro (~> 1.1.1)
+  geokit
+  geokit-rails
   haml-rails (~> 1.0.0)
   jbuilder (~> 2.7.0)
   letter_opener (~> 1.4.1)
@@ -428,18 +457,20 @@ DEPENDENCIES
   rails_best_practices (~> 1.19.4)
   reek (~> 5.3.1)
   rspec-rails (~> 3.8.0)
+  rswag
   rubocop (~> 0.65.0)
   sendgrid (~> 1.2.4)
   shoulda-matchers (~> 3.1.1)
   simplecov (~> 0.13.0)
   spring
   spring-watcher-listen (~> 2.0.0)
+  twilio-ruby
   tzinfo-data
   uglifier (~> 2.7.2)
   webmock (~> 2.3.2)
 
 RUBY VERSION
-   ruby 2.4.1p111
+   ruby 2.4.0p0
 
 BUNDLED WITH
    1.17.2

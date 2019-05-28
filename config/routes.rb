@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  mount Rswag::Ui::Engine => '/api-docs'
+  mount Rswag::Api::Engine => '/api-docs'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   mount_devise_token_auth_for 'User', at: '/api/v1/users', controllers: {
@@ -11,10 +13,17 @@ Rails.application.routes.draw do
     namespace :v1, defaults: { format: :json } do
       devise_scope :user do
         get :status, to: 'api#status'
+        resources :users do
+          member do
+            get :quotes
+          end
+        end
         resource :user, only: %i[update show] do
           get :profile
         end
       end
+
+      get :get_quote, to: ""
     end
   end
 end

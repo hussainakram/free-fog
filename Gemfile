@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.4.1'
+ruby '2.4.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.2'
@@ -27,6 +27,11 @@ gem 'sendgrid', '~> 1.2.4'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+
+gem 'rswag' # adds a Swagger docs to Rails
+gem "geokit"
+gem 'geokit-rails' # for playing with geolocation - https://github.com/geokit/geokit-rails
+gem 'twilio-ruby'
 
 group :development, :test do
   gem 'bullet', '~> 5.7.5'

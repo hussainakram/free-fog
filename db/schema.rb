@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_02_142200) do
+ActiveRecord::Schema.define(version: 2019_05_28_214535) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +68,30 @@ ActiveRecord::Schema.define(version: 2018_11_02_142200) do
     t.index ["priority", "run_at"], name: "delayed_jobs_priority"
   end
 
+  create_table "insurance_companies", force: :cascade do |t|
+    t.string "name"
+    t.string "contact"
+    t.string "office"
+  end
+
+  create_table "quotes", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "company_id"
+    t.decimal "rate"
+    t.index ["company_id"], name: "index_quotes_on_company_id"
+    t.index ["user_id"], name: "index_quotes_on_user_id"
+  end
+
+  create_table "tours", force: :cascade do |t|
+    t.string "name"
+    t.decimal "longitude", precision: 10, scale: 6
+    t.decimal "latitude", precision: 10, scale: 6
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["longitude", "latitude"], name: "index_tours_on_longitude_and_latitude"
+  end
+
   create_table "users", id: :serial, force: :cascade do |t|
     t.string "email"
     t.string "encrypted_password", default: "", null: false
@@ -88,9 +112,21 @@ ActiveRecord::Schema.define(version: 2018_11_02_142200) do
     t.string "provider", default: "email", null: false
     t.string "uid", default: "", null: false
     t.json "tokens"
+    t.string "passport_id"
+    t.string "phone"
+    t.datetime "dob"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
+  end
+
+  create_table "whitelisted_locations", force: :cascade do |t|
+    t.string "name"
+    t.decimal "longitude", precision: 10, scale: 6
+    t.decimal "latitude", precision: 10, scale: 6
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["longitude", "latitude"], name: "index_whitelisted_locations_on_longitude_and_latitude"
   end
 
 end
