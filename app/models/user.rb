@@ -46,6 +46,7 @@ class User < ApplicationRecord
 
   has_many :quotes
   has_many :tours
+  has_many :sms_logs
 
   def full_name
     return username if first_name.blank?

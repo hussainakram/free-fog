@@ -22,15 +22,20 @@ class Tour < ApplicationRecord
     is_prime =  WhitelistedLocation.within(10, origin: [latitude, longitude]).present?
 
     if is_prime
-      generator = QuoteGeneratorService.new(user.age)
-      message = $twilio_client.api.account.messages.create(
-        from: '+15005550006',
-        to:   user.phone,
-        body: "Hey there! We have got a perfect quote for your travel insurance starting with just #{generator.quote}"
-      )
-
-      puts ">>>>>>>>>>>>>>>>>>>>>>>>> Quote Rate:  #{generator.quote}"
-      puts "=========== Message send it sid: #{message.sid} ==============="
+      quote = QuoteGeneratorService.new(user.age).quote
+      send_message(quote)
     end
+  end
+
+  def send_message(quote)
+    from = Figaro.env.twilio_sender
+    to = user.phone
+    body = "Hi #{user.first_name}, We have got amazing offer for your travel insurance starting with just #{quote}"
+
+    client = Twilio::REST::Client.new
+    message = client.api.account.messages.create(from: from, to: to, body: body) rescue nil
+
+    quote = user.quotes.create(rate: quote)
+    user.sms_logs.create(from: from, to: to, body: body, quote_id: quote.id)
   end
 end

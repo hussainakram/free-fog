@@ -5,7 +5,7 @@
 #  id         :integer          not null, primary key
 #  user_id    :integer
 #  company_id :integer
-#  rate       :decimal(, )
+#  rate       :string
 #
 # Indexes
 #
@@ -15,5 +15,6 @@
 
 class Quote < ActiveRecord::Base
   belongs_to :user
+  has_many :sms_logs
 
 end

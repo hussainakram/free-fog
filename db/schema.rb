@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_28_214535) do
+ActiveRecord::Schema.define(version: 2019_05_29_211933) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,9 +77,21 @@ ActiveRecord::Schema.define(version: 2019_05_28_214535) do
   create_table "quotes", force: :cascade do |t|
     t.integer "user_id"
     t.integer "company_id"
-    t.decimal "rate"
+    t.string "rate"
     t.index ["company_id"], name: "index_quotes_on_company_id"
     t.index ["user_id"], name: "index_quotes_on_user_id"
+  end
+
+  create_table "sms_logs", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "quote_id"
+    t.text "body"
+    t.string "from"
+    t.string "to"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["quote_id"], name: "index_sms_logs_on_quote_id"
+    t.index ["user_id"], name: "index_sms_logs_on_user_id"
   end
 
   create_table "tours", force: :cascade do |t|
@@ -129,4 +141,6 @@ ActiveRecord::Schema.define(version: 2019_05_28_214535) do
     t.index ["longitude", "latitude"], name: "index_whitelisted_locations_on_longitude_and_latitude"
   end
 
+  add_foreign_key "sms_logs", "quotes"
+  add_foreign_key "sms_logs", "users"
 end
