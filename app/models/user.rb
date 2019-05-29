@@ -60,6 +60,11 @@ class User < ApplicationRecord
     end
   end
 
+  def age
+    diff = Date.today - dob.to_date
+    age = (diff / 365.25).floor
+  end
+
   private
 
   def uses_email?

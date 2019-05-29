@@ -5,6 +5,61 @@
     "version": "v1"
   },
   "paths": {
+    "/api/v1/tours": {
+      "post": {
+        "summary": "Send a tour",
+        "tags": [
+          "Triggers"
+        ],
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "params",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "user_id": {
+                  "type": "integer"
+                },
+                "tour": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "latitude": {
+                      "type": "number"
+                    },
+                    "longitude": {
+                      "type": "number"
+                    }
+                  }
+                }
+              },
+              "required": [
+                "latitude",
+                "longitude"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "tour created"
+          },
+          "422": {
+            "description": "invalid request"
+          },
+          "404": {
+            "description": "user not found"
+          }
+        }
+      }
+    },
     "/api/v1/users": {
       "post": {
         "summary": "SignUp a user",
@@ -119,7 +174,8 @@
           "Users"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/xml"
         ],
         "parameters": [
           {

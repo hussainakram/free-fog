@@ -7,6 +7,7 @@ Devise.setup do |config|
   # with default "from" parameter.
   config.mailer_sender = 'no-reply@yourapi.com'
 
+  config.secret_key = 'f403be797fc05567cde6a1291b496d4571708d6d6637a816931faa656b8e6dfabdf7852c4321e83d62fc4a641b85a27f4856b7c312df50a94fa674908baa859a'
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
 

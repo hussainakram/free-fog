@@ -1,1 +1,1 @@
-AdminUser.create!(email: 'admin@example.com', password: 'password') if Rails.env.development?
+AdminUser.create!(email: 'super_admin@example.com', password: 'password')

@@ -1,9 +1,7 @@
 # Put here the variables used by all the environments
-variables = %w[SERVER_URL PASSWORD_RESET_URL]
-
 unless Rails.env.test?
   # Variables not used by the test environment
-  variables += %w[SECRET_KEY_BASE]
+  variables = %w[secret_key_base twilio_account_sid twilio_auth_token]
 end
 
 Figaro.require_keys(variables)

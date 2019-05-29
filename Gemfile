@@ -5,6 +5,7 @@ ruby '2.4.0'
 gem 'rails', '~> 5.2.2'
 
 gem 'activeadmin', '~> 1.4.3'
+gem 'active_skin'
 gem 'aws-sdk-s3', '~> 1', require: false
 gem 'bootsnap', '~> 1.3.0'
 gem 'delayed_job_active_record', '~> 4.1.3'
