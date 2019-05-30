@@ -21,7 +21,7 @@ class Tour < ApplicationRecord
   def search_quote
     is_prime =  WhitelistedLocation.within(10, origin: [latitude, longitude]).present?
 
-    if !is_prime
+    if is_prime
       quote = QuoteGeneratorService.new(user.age).quote
       send_message(quote)
     end
