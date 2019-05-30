@@ -5,6 +5,73 @@
     "version": "v1"
   },
   "paths": {
+    "/api/v1/locations": {
+      "get": {
+        "summary": "Get all whitelisted locations",
+        "tags": [
+          "Locations"
+        ],
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "responses": {
+          "201": {
+            "description": "tour created"
+          },
+          "422": {
+            "description": "invalid request"
+          }
+        }
+      },
+      "post": {
+        "summary": "Create WhiteListed Location",
+        "tags": [
+          "Locations"
+        ],
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "params",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "location": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "latitude": {
+                      "type": "number"
+                    },
+                    "longitude": {
+                      "type": "number"
+                    }
+                  }
+                }
+              },
+              "required": [
+                "latitude",
+                "longitude"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "tour created"
+          },
+          "422": {
+            "description": "invalid request"
+          }
+        }
+      }
+    },
     "/api/v1/tours": {
       "post": {
         "summary": "Send a tour",
@@ -171,7 +238,7 @@
       "get": {
         "summary": "Get quotes of a user",
         "tags": [
-          "Users"
+          "Quotes"
         ],
         "produces": [
           "application/json",

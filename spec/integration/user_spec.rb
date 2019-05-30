@@ -72,7 +72,7 @@ describe 'Users API' do
   path '/api/v1/users/{id}/quotes' do
 
     get 'Get quotes of a user' do
-      tags 'Users'
+      tags 'Quotes'
       produces 'application/json', 'application/xml'
       parameter name: :id, in: :path, type: :integer, description: 'Unique identifier'
 

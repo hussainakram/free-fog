@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1, defaults: { format: :json } do
       post :tours, to: "tours#create"
+      get :locations, to: "locations#index"
+      post :locations, to: "locations#create"
       devise_scope :user do
         get :status, to: 'api#status'
         resources :users do
