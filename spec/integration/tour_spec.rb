@@ -11,6 +11,7 @@ describe 'Triggers API' do
         type: :object,
         properties: {
           user_id: {type: :integer},
+          radius: {type: :integer},
           tour: {
             type: :object,
             properties: {

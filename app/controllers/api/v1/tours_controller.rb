@@ -9,7 +9,7 @@ module Api
         if user.present?
           tour = user.tours.create(tour_params)
 
-          render json: tour.search_quote
+          render json: tour.search_quote(params[:radius])
         else
           render json: { error: I18n.t('api.errors.not_found') }, status: :not_found
         end

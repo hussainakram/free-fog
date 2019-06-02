@@ -18,8 +18,9 @@
 class Tour < ApplicationRecord
   belongs_to :user
 
-  def search_quote
-    is_prime =  WhitelistedLocation.within(10, origin: [latitude, longitude]).present?
+  def search_quote(radius)
+    radius = to_miles(radius)
+    is_prime =  WhitelistedLocation.within(1, origin: [latitude, longitude]).present?
 
     if is_prime
       quote = QuoteGeneratorService.new(user.age).quote
@@ -37,5 +38,9 @@ class Tour < ApplicationRecord
 
     quote = user.quotes.create(rate: quote)
     user.sms_logs.create(from: from, to: to, body: body, quote_id: quote.id)
+  end
+
+  def to_miles(meters)
+    meters*0.000621371192
   end
 end
