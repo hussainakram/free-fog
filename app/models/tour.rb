@@ -31,7 +31,11 @@ class Tour < ApplicationRecord
   def send_message(quote)
     from = Figaro.env.twilio_sender
     to = user.phone
-    body = "Hi #{user.first_name}, We have got amazing offer for your travel insurance starting with just #{quote}"
+    body = "Hi #{user.first_name}, We have got an amazing offer for your travel insurance starting with just #{quote} AED"
+
+    puts "="*120
+    puts body
+    puts "="*120
 
     client = Twilio::REST::Client.new
     message = client.api.account.messages.create(from: from, to: to, body: body) rescue nil

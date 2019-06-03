@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_29_211933) do
+ActiveRecord::Schema.define(version: 2019_06_02_112941) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,6 +72,8 @@ ActiveRecord::Schema.define(version: 2019_05_29_211933) do
     t.string "name"
     t.string "contact"
     t.string "office"
+    t.decimal "fixed_margin"
+    t.decimal "percentage_margin"
   end
 
   create_table "quotes", force: :cascade do |t|

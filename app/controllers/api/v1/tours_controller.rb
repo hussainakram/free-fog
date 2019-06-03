@@ -7,9 +7,11 @@ module Api
         user = User.find_by_id params[:user_id]
 
         if user.present?
-          tour = user.tours.create(tour_params)
+          ActiveRecord::Base.transaction do
+            tour = user.tours.create(tour_params)
 
-          render json: tour.search_quote(params[:radius])
+            render json: tour.search_quote(params[:radius])
+          end
         else
           render json: { error: I18n.t('api.errors.not_found') }, status: :not_found
         end

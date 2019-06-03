@@ -1,0 +1,4 @@
+module Common
+  OUREA_FIXED_MARGIN = 0.35
+  ETISALAT_PERCENTAGE_FACTOR = 1.07
+end
