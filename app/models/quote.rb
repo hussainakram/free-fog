@@ -6,6 +6,7 @@
 #  user_id    :integer
 #  company_id :integer
 #  rate       :string
+#  plan       :string
 #
 # Indexes
 #

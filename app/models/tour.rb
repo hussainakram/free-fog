@@ -22,7 +22,7 @@ class Tour < ApplicationRecord
     radius = to_miles(radius)
     is_prime =  WhitelistedLocation.within(1, origin: [latitude, longitude]).present?
 
-    if is_prime
+    if !is_prime
       quote = QuoteGeneratorService.new(user.age).quote
       send_message(quote)
     end

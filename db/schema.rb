@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_02_112941) do
+ActiveRecord::Schema.define(version: 2019_06_05_145504) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,14 +72,23 @@ ActiveRecord::Schema.define(version: 2019_06_02_112941) do
     t.string "name"
     t.string "contact"
     t.string "office"
-    t.decimal "fixed_margin"
-    t.decimal "percentage_margin"
+  end
+
+  create_table "margins", force: :cascade do |t|
+    t.string "plan"
+    t.decimal "ourea_fixed"
+    t.decimal "ourea_factor"
+    t.decimal "etisalat_fixed"
+    t.decimal "etisalat_factor"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "quotes", force: :cascade do |t|
     t.integer "user_id"
     t.integer "company_id"
     t.string "rate"
+    t.string "plan"
     t.index ["company_id"], name: "index_quotes_on_company_id"
     t.index ["user_id"], name: "index_quotes_on_user_id"
   end
