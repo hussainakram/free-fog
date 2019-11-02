@@ -9,7 +9,7 @@ gem 'active_skin'
 gem 'aws-sdk-s3', '~> 1', require: false
 gem 'bootsnap', '~> 1.3.0'
 gem 'delayed_job_active_record', '~> 4.1.3'
-gem 'devise', '~> 4.4.3'
+gem 'devise', '~> 4.6.2'
 gem 'devise_token_auth', '~> 1.1.0'
 gem 'draper', '~> 3.0.0'
 gem 'figaro', '~> 1.1.1'
